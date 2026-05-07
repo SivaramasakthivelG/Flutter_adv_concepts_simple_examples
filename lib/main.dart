@@ -1,11 +1,17 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_concepts/providers/position_provider.dart';
 import 'package:flutter_advanced_concepts/routing_setup.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   final dio = Dio();
 
-  runApp(MyApp(dio: dio));
+  runApp(ChangeNotifierProvider(
+      create: (_) => PositionProvider(),
+      child: MyApp(dio: dio)
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
